@@ -7,35 +7,41 @@
 
 #include "data.h"
 #include "expenseWrapper.h"
+#include "parseFile.h"
 
 namespace utils {
     // Cant decide if this is shit or not xd
 class uiDisplay {
-    std::string userInput;
     expenseWrapper expenseModel;
 
 public:
-    void displayExpenses();
     void createNewExpense();
     void updateExpense();
     void deleteExpense();
+    void displayAllExpenses() const;
+    void displayExpenseById();
     void displayExpensesByDate();
     void displayExpensesByType();
+    void displayExpensesByCategory();
     void displayExpensesByDateAndType();
+    static void displayMainMenu();
+    static void displaySearchMenu();
+    static void displayError();
 
-    [[nodiscard]] std::string getUserInput() const;
+    template <typename T>
+    [[nodiscard]] T promptUser();
 
     [[nodiscard]] expenseWrapper getExpenseModel() const;
     void setExpenseModel(const expenseWrapper &expenseModel);
 
 private:
-    static void displayExpense(const data::expense &expenses);
+    data::expense promtUserForExpense();
+    static void displayExpense(const data::expense &expense);
     int convertUserInput(const std::string &str);
     std::string validateUserInput(const std::string &str);
-    void displayTypes();
-    void displayCaregories();
-    template <typename T>
-    [[nodiscard]] T promptUser();
+    static void displayTypes();
+    static void displayCaregories();
+    static void displayExpenses(const std::list<data::expense> &expenses);
 };
 
 } // utils

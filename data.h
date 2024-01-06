@@ -6,26 +6,28 @@
 #define DATA_H
 #include <string>
 
+namespace data {
+    struct expense {
+        int id;
+        std::string date;
+        int type;
+        int category;
+        int amount;
+        std::string comment;
+    };
 
-struct expense {
-    int id;
-    std::string date;
-    int type;
-    int category;
-    int amount;
-    std::string comment;
-};
+    enum expenseCategory {
+        food,
+        transport,
+        clothes,
+        other
+    };
 
-enum expenseCategory {
-    food,
-    transport,
-    clothes,
-    other
-};
+    enum expenseType {
+        essential,
+        nonessential
+    };
+} // data
 
-enum expenseType {
-    essential,
-    nonessential
-};
 
 #endif //DATA_H

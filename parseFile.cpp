@@ -21,7 +21,7 @@ namespace utils {
         return this->fileContent;
     }
 
-    std::list<expense> parseFile::getExpenses() {
+    std::list<data::expense> parseFile::getExpenses() {
         // Clear all data to be safe
         this->fileContent = "";
         this->lines.clear();
@@ -33,7 +33,7 @@ namespace utils {
 
     }
 
-    void parseFile::setExpenses(const std::list<expense> &expenses) {
+    void parseFile::setExpenses(const std::list<data::expense> &expenses) {
         this->expenses = expenses;
     }
 
@@ -62,11 +62,11 @@ namespace utils {
                 i++;
             }
 
-            expense newExpense;
+            data::expense newExpense;
             newExpense.id = std::stoi(expenseData[0]);
             newExpense.date = expenseData[1];
-            newExpense.type = static_cast<expenseType>(std::stoi(expenseData[2]));
-            newExpense.category = static_cast<expenseCategory>(std::stoi(expenseData[3]));
+            newExpense.type = static_cast<data::expenseType>(std::stoi(expenseData[2]));
+            newExpense.category = static_cast<data::expenseCategory>(std::stoi(expenseData[3]));
             newExpense.amount = std::stoi(expenseData[4]);
             newExpense.comment = expenseData[5];
             this->expenses.push_back(newExpense);
@@ -83,15 +83,25 @@ namespace utils {
         outfile.close();
     }
 
+    void parseFile::loadDataToFile(const std::list<data::expense> &expenses) const {
+        clearFile();
+        std::ofstream outfile;
+        outfile.open(this->fileName,std::ios_base::app);
+        for (const std::string& data: convertData(expenses)) {
+            outfile << data;
+        }
+        outfile.close();
+    }
+
     void parseFile::clearFile() const {
         std::ofstream outfile;
         outfile.open(this->fileName, std::ofstream::out | std::ofstream::trunc);
         outfile.close();
     }
 
-    std::list<std::string> parseFile::convertData(const std::list<expense>& expenses) {
+    std::list<std::string> parseFile::convertData(const std::list<data::expense>& expenses) {
         std::list<std::string> convertedString;
-        std::ranges::for_each(expenses.begin(), expenses.end(), [&convertedString](expense n) {
+        std::ranges::for_each(expenses.begin(), expenses.end(), [&convertedString](data::expense n) {
             convertedString.push_front(
                 std::format("{};{};{};{};{};{}\n",
                     n.id,
@@ -104,4 +114,4 @@ namespace utils {
         });
         return convertedString;
     }
-}
+} // utils

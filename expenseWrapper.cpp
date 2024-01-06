@@ -32,7 +32,7 @@ namespace utils {
         return {};
     }
 
-    std::list<data::expense> expenseWrapper::getExpensesByType(const expenseType &type) {
+    std::list<data::expense> expenseWrapper::getExpensesByType(const data::expenseType &type) {
         std::list<data::expense> returnExpenses;
         for (data::expense &expense : this->expenses) {
             if (expense.type == type) returnExpenses.push_back(expense);
@@ -40,7 +40,7 @@ namespace utils {
         return returnExpenses;
     }
 
-    std::list<data::expense> expenseWrapper::getExpensesByCategory(const data::expenseType &category) {
+    std::list<data::expense> expenseWrapper::getExpensesByCategory(const data::expenseCategory &category) {
         std::list<data::expense> returnExpenses;
         for (data::expense &expense : this->expenses) {
             if (expense.category == category) returnExpenses.push_back(expense);
@@ -53,6 +53,18 @@ namespace utils {
         for (data::expense &expense : this->expenses) {
             if (expense.date == date) returnExpenses.push_back(expense);
         }
+        return returnExpenses;
+    }
+
+    std::list<data::expense> expenseWrapper::getExpensesByDateAndCategory(
+        const std::string &date,
+        const data::expenseCategory &category) {
+        std::list<data::expense> returnExpenses;
+
+        for (data::expense &expense : this->expenses) {
+            if (expense.date == date && expense.category ==  category) returnExpenses.push_back(expense);
+        }
+
         return returnExpenses;
     }
 

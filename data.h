@@ -23,10 +23,16 @@ namespace data {
         other
     };
 
+
     enum expenseType {
         essential,
         nonessential
     };
+
+    std::ostream &operator << (std::ostream& strm, expenseCategory exCat);
+    std::ostream &operator << (std::ostream& strm, expenseType exType);
+    std::string categoryToString(const expenseCategory &exCat);
+    std::string typeToString(const expenseType &exType);
 } // data
 
 

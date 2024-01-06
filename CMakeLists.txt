@@ -9,4 +9,9 @@ add_executable(cpluswallet main.cpp
         data.h
         expenseWrapper.cpp
         expenseWrapper.h
+        uiDisplay.cpp
+        uiDisplay.h
+        convert.cpp
+        convert.h
+        data.cpp
 )

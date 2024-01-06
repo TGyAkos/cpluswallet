@@ -11,6 +11,11 @@
 namespace utils {
 
 class parseFile {
+    std::string fileName;
+    std::string fileContent;
+    std::list<std::string> lines;
+    std::list<expense> expenses;
+
 public:
     explicit parseFile(const std::string& fileName);
     [[nodiscard]] std::string getFileName();
@@ -22,11 +27,6 @@ public:
     void clearFile() const;
 
 private:
-    std::string fileName;
-    std::string fileContent;
-    std::list<std::string> lines;
-    std::list<expense> expenses;
-
     void readFileContent();
     void parseFileContent();
     static std::list<std::string> convertData(const std::list<expense>& expenses);

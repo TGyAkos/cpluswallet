@@ -14,4 +14,6 @@ add_executable(cpluswallet main.cpp
         convert.cpp
         convert.h
         data.cpp
+        run.cpp
+        run.h
 )

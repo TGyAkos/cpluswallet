@@ -3,7 +3,7 @@
 //
 
 #include "parseFile.h"
-#include "data.h"
+#include "../data/data.h"
 
 #include <algorithm>
 #include <format>

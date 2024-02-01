@@ -6,7 +6,7 @@
 #define PARSEFILE_H
 #include <list>
 #include <string>
-#include "data.h"
+#include "../data/data.h"
 
 namespace utils {
 

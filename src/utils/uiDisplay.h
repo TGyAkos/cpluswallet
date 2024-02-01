@@ -5,7 +5,7 @@
 #ifndef UIDISPLAY_H
 #define UIDISPLAY_H
 
-#include "data.h"
+#include "../data/data.h"
 #include "expenseWrapper.h"
 #include "parseFile.h"
 

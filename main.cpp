@@ -1,9 +1,4 @@
-#include <format>
-#include <iostream>
-
-#include "parseFile.h"
-#include "run.h"
-
+#include "src/runtime/run.h"
 
 int main() {
     runtime::run runObject;

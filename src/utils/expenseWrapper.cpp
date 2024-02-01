@@ -4,6 +4,8 @@
 
 #include "expenseWrapper.h"
 
+#include "../data/data.h"
+
 namespace utils {
     std::list<data::expense> expenseWrapper::getExpenses() const {
         return this->expenses;

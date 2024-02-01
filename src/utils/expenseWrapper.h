@@ -6,7 +6,7 @@
 #define EXPENSEWRAPPER_H
 #include <list>
 
-#include "data.h"
+#include "../data/data.h"
 
 namespace utils {
 

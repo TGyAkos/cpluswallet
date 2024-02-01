@@ -20,6 +20,9 @@ add_executable(cpluswallet main.cpp
         src/runtime/run.h
 )
 
+# Added libraries for systems WITHOUT these
+target_link_libraries(cpluswallet -static-libgcc -static-libstdc++)
+
 # download gtest
 include(FetchContent)
 FetchContent_Declare(
